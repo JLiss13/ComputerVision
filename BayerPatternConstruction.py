@@ -8,12 +8,11 @@ def aver(i,j,num,raw_image):
     raw_image[i,j,0]=(raw_image[i,j-1,0]+raw_image[i,j+1,0])/2
     return
 plt.close("all")
-Image_URL="/Users/Jaliss/Documents/UCSC/CMPE_264/Hw2/Photos/image_bayer.jpeg"
+Image_URL=raw_input("What is the directory of image?")
 image=cv2.imread(Image_URL,1)
 image=image.copy()
 image = cv2.cvtColor(image,cv2.COLOR_BGR2RGB)
 image=np.uint8(image)
-print("Hw2_1\n")
 # Each row has RGB contributions, the produced color is equal contributions from each RGB.
 # To implement the BAYER algo we need to interpolate each color from each pixel separately.
 # G, R, G; B, G, B;G, R, G
@@ -60,7 +59,8 @@ plt.subplot(224)
 plt.imshow(croppedraw_image, interpolation='none')
 plt.show()
 
-os.chdir('/Users/Jaliss/Documents/UCSC/CMPE_264/Hw2/Images')
+Imagedirectory = raw_input("Where do you want the image saved?")
+os.chdir(Imagedirectory)
 plt.figure()
 plt.imshow(raw_image)
 plt.show()
